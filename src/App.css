@@ -793,3 +793,87 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   text-align: center;
 }
  
+
+/* =================================================
+   EDIT MODAL layout
+================================================= */
+
+.modal-content.edit-modal {
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.modal-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #eef1ff;
+  color: #4a6cf7;
+}
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.edit-grid .span-2 {
+  grid-column: span 2;
+}
+
+.edit-grid .form-field {
+  min-width: 0;
+}
+
+.edit-grid input,
+.edit-grid select,
+.edit-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.edit-grid textarea {
+  background: #f9fafb;
+  color: #1a1a2e;
+  border: 1px solid #e2e4e9;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.edit-grid textarea::placeholder {
+  color: #9ca3af;
+}
+
+.edit-grid textarea:focus {
+  outline: none;
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+@media (max-width: 520px) {
+  .edit-grid {
+    grid-template-columns: 1fr;
+  }
+  .edit-grid .span-2 {
+    grid-column: span 1;
+  }
+}

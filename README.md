@@ -1,16 +1,71 @@
-# React + Vite
+# Job Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React app for tracking job applications. It talks to a Spring Boot API: [jobtracker](https://github.com/arbinita/jobtracker).
 
-Currently, two official plugins are available:
+## Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Login**
 
-## React Compiler
+![Login](screenshots/login.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Dashboard**
 
-## Expanding the ESLint configuration
+![Dashboard](screenshots/dashboard.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Filtering by status**
+
+![Filtered view](screenshots/filtered.png)
+
+**Edit modal**
+
+![Edit modal](screenshots/edit-modal.png)
+
+## What it does
+
+- Sign up and log in; pages redirect to login when there is no token, and an expired or invalid token sends you back to login
+- Add, edit and delete applications (edit opens a modal, delete asks for confirmation)
+- Click a status card (Applied, Interview, Offer, Rejected) to filter the table
+- Search by company, sort by date or company name
+- Responsive layout
+
+## Stack
+
+React with Vite, React Router, Axios, lucide-react for icons. Styling is plain CSS.
+
+## Running it locally
+
+The [backend](https://github.com/arbinita/jobtracker) needs to be running on `localhost:8080` first.
+
+```bash
+git clone https://github.com/arbinita/jobtracker-frontend.git
+cd jobtracker-frontend
+npm install
+```
+
+Create a `.env` file in the project root:
+
+```
+VITE_API_URL=http://localhost:8080/api/applications
+```
+
+Start it:
+
+```bash
+npm run dev
+```
+
+## Structure
+
+```
+api/          axios calls
+components/   form, table, modals, status filters, login, signup
+constants/    status options shared by the add form and edit modal
+App.jsx       holds the state and connects the components
+```
+
+## Known limitations
+
+- The login token is stored in localStorage
+- Failed requests other than auth failures are only logged to the console, with no error message in the UI
+- No tests yet
+- Not deployed, it runs locally only
